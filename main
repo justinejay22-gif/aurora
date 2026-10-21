@@ -1,0 +1,68 @@
+local Fluent = loadstring(game:HttpGet(
+"https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"
+))()
+
+local GroupID = 67
+local GroupLink = "https://shorturl.asia/7v3dif"
+
+local Window = Fluent:CreateWindow({
+Title = "Aurora",
+SubTitle = "Premium Build",
+TabWidth = 160,
+Size = UDim2.fromOffset(480, 320),
+Acrylic = true,
+Theme = "Dark",
+MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+Auth = Window:AddTab({
+Title = "Authentication",
+Icon = "shield-check"
+}),
+Instructions = Window:AddTab({
+Title = "Instructions",
+Icon = "info"
+})
+}
+
+Tabs.Auth:AddParagraph({
+Title = "Access Locked",
+Content = "Join the required Roblox group to unlock access."
+})
+
+Tabs.Auth:AddButton({
+Title = "Copy Access Link",
+Description = "Copy the group link",
+Callback = function()
+if setclipboard then
+setclipboard(GroupLink)
+Fluent:Notify({
+Title = "Aurora",
+Content = "Access link copied!",
+Duration = 2
+})
+else
+Fluent:Notify({
+Title = "Aurora",
+Content = "Clipboard unsupported",
+Duration = 2
+})
+end
+end
+})
+
+Tabs.Instructions:AddParagraph({
+Title = "1. Open Browser",
+Content = "Open your preferred browser."
+})
+
+Tabs.Instructions:AddParagraph({
+Title = "2. Paste Link",
+Content = "Paste the copied group link."
+})
+
+Tabs.Instructions:AddParagraph({
+Title = "3. Join Group",
+Content = "Join the group, then return to Roblox."
+})
